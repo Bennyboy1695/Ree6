@@ -10,7 +10,7 @@
 
     <groupId>de.presti</groupId>
     <artifactId>Ree6</artifactId>
-    <version>4.0.0</version>
+    <version>4.0.2</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -172,7 +172,7 @@
         <dependency>
             <groupId>com.github.Bennyboy1695</groupId>
             <artifactId>Ree6-SQL</artifactId>
-            <version>605d5e6cb8</version>
+            <version>872fa975ef</version>
         </dependency>
 
         <!-- Logging -->

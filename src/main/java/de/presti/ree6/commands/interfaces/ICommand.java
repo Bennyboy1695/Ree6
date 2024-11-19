@@ -65,6 +65,8 @@ public interface ICommand extends ExtensionPoint {
             onPerform(commandEvent);
             if (BotConfig.isDebug())
                 log.info("Command {} has ended, called by {} in {} ({}).", commandEvent.getCommand(), commandEvent.getUser().getName(), commandEvent.getGuild().getName(), commandEvent.getGuild().getId());
+        } else {
+            commandEvent.reply("You do not have permission to run this command. For more information, speak to the mods.", 5);
         }
     }
 
