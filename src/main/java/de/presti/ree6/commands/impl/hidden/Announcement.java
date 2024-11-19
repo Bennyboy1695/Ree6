@@ -24,10 +24,10 @@ public class Announcement implements ICommand {
     @Override
     public void onPerform(CommandEvent commandEvent) {
 
-        if (!commandEvent.isBotOwner()) {
+/*        if (!commandEvent.isBotOwner()) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", "BE DEVELOPER"), 5);
             return;
-        }
+        }*/
 
         if (!commandEvent.isSlashCommand()) {
             commandEvent.reply(commandEvent.getResource("command.perform.onlySlashSupported"));

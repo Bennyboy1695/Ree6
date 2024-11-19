@@ -25,7 +25,7 @@ public class Unban implements ICommand {
     @Override
     public void onPerform(CommandEvent commandEvent) {
 
-        if (commandEvent.getMember().hasPermission(Permission.BAN_MEMBERS)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.BAN_MEMBERS)) {*/
 
             if (commandEvent.isSlashCommand()) {
 
@@ -56,9 +56,9 @@ public class Unban implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.default.usage","unban @user"), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.BAN_MEMBERS.name()), 5);
-        }
+        }*/
 
         commandEvent.delete();
     }

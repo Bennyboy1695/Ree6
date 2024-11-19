@@ -51,10 +51,10 @@ public class Notifier implements ICommand {
             return;
         }
 
-        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_WEBHOOKS)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_WEBHOOKS)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MANAGE_WEBHOOKS.getName()));
             return;
-        }
+        }*/
 
 
         String command = commandEvent.getSubcommand();
@@ -63,6 +63,11 @@ public class Notifier implements ICommand {
         OptionMapping nameMapping = commandEvent.getOption("name");
         OptionMapping channelMapping = commandEvent.getOption("channel");
         OptionMapping messageMapping = commandEvent.getOption("message");
+
+        if (!hasSubCommandPermission(commandEvent, command)) {
+            commandEvent.reply(commandEvent.getResource("message.default.noPermissionForCommand", commandEvent.getCommand() + "_" + command));
+            return;
+        }
 
         switch (commandGroup) {
             case "list" -> {

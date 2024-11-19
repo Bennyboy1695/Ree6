@@ -31,7 +31,7 @@ public class Mute implements ICommand {
             return;
         }
 
-        if (commandEvent.getMember().hasPermission(Permission.MODERATE_MEMBERS)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.MODERATE_MEMBERS)) {*/
 
             if (commandEvent.isSlashCommand()) {
 
@@ -75,9 +75,9 @@ public class Mute implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.default.usage","mute @user"), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MODERATE_MEMBERS.name()), 5);
-        }
+        }*/
         commandEvent.delete();
     }
 

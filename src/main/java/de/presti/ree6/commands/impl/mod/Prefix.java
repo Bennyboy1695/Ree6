@@ -24,8 +24,10 @@ public class Prefix implements ICommand {
      */
     @Override
     public void onPerform(CommandEvent commandEvent) {
+/*
 
         if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR) && commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+*/
 
             if (commandEvent.isSlashCommand()) {
                 OptionMapping prefixOption = commandEvent.getOption("new-prefix");
@@ -45,9 +47,9 @@ public class Prefix implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.prefix.success", commandEvent.getArguments()[0]), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR.name() + "/" + Permission.MANAGE_SERVER.name()));
-        }
+        }*/
     }
 
     /**

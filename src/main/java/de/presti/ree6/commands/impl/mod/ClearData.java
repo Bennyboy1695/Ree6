@@ -31,7 +31,7 @@ public class ClearData implements ICommand {
      */
     @Override
     public void onPerform(CommandEvent commandEvent) {
-        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {*/
             if (!timeout.contains(commandEvent.getGuild().getId())) {
                 SQLSession.getSqlConnector().getSqlWorker().clearInvites(commandEvent.getGuild().getIdLong());
                 if (commandEvent.getGuild().getSelfMember().hasPermission(Permission.MANAGE_SERVER))
@@ -49,9 +49,9 @@ public class ClearData implements ICommand {
             } else {
                 commandEvent.reply(commandEvent.getResource("message.clearData.cooldown"), 5);
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR.name()), 5);
-        }
+        }*/
     }
 
     /**

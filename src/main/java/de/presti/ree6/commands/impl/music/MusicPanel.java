@@ -79,10 +79,10 @@ public class MusicPanel implements ICommand {
      */
     @Override
     public void onPerform(CommandEvent commandEvent) {
-        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MANAGE_SERVER.name()), 5);
             return;
-        }
+        }*/
 
         MessageCreateBuilder messageCreateBuilder = new MessageCreateBuilder();
 

@@ -61,9 +61,11 @@ public interface ICommand extends ExtensionPoint {
     }
 
     default void onPerformWithLog(CommandEvent commandEvent) {
-        onPerform(commandEvent);
-        if (BotConfig.isDebug())
-            log.info("Command {} has ended, called by {} in {} ({}).", commandEvent.getCommand(), commandEvent.getUser().getName(), commandEvent.getGuild().getName(), commandEvent.getGuild().getId());
+        if (hasPermission(commandEvent)) {
+            onPerform(commandEvent);
+            if (BotConfig.isDebug())
+                log.info("Command {} has ended, called by {} in {} ({}).", commandEvent.getCommand(), commandEvent.getUser().getName(), commandEvent.getGuild().getName(), commandEvent.getGuild().getId());
+        }
     }
 
     /**
@@ -86,5 +88,17 @@ public interface ICommand extends ExtensionPoint {
      * @return the Aliases.
      */
     String[] getAlias();
+
+    default boolean hasPermission(CommandEvent commandEvent) {
+        return commandEvent.getMember().getRoles().stream().anyMatch(role ->
+                SQLSession.getSqlConnector().getSqlWorker().isRoleIdPresent(commandEvent.getCommand(), role.getIdLong()).blockOptional()
+                        .orElse(commandEvent.isBotOwner()));
+    }
+
+    default boolean hasSubCommandPermission(CommandEvent commandEvent, String subCommand) {
+        return commandEvent.getMember().getRoles().stream().anyMatch(role ->
+                SQLSession.getSqlConnector().getSqlWorker().isRoleIdPresent(commandEvent.getCommand() + "_" + subCommand, role.getIdLong()).blockOptional()
+                        .orElse(commandEvent.isBotOwner()));
+    }
 
 }

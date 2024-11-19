@@ -32,10 +32,10 @@ public class EmbedSender implements ICommand {
             return;
         }
 
-        if (!commandEvent.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MESSAGE_MANAGE.name()), 5);
             return;
-        }
+        }*/
 
         OptionMapping title = commandEvent.getOption("title");
         OptionMapping description = commandEvent.getOption("description");

@@ -31,7 +31,7 @@ public class Ban implements ICommand {
             return;
         }
 
-        if (commandEvent.getMember().hasPermission(Permission.BAN_MEMBERS)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.BAN_MEMBERS)) {*/
             if (commandEvent.isSlashCommand()) {
                 OptionMapping targetOption = commandEvent.getOption("target");
                 OptionMapping reasonOption = commandEvent.getOption("reason");
@@ -68,9 +68,9 @@ public class Ban implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.default.usage","ban @user [reason]"), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR.name()), 5);
-        }
+        }*/
 
         commandEvent.delete();
     }

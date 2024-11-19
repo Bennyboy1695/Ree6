@@ -86,6 +86,7 @@ public class CommandManager {
             log.info("Loading Command {}", aClass.getSimpleName());
 
             addCommand(aClass.getDeclaredConstructor().newInstance());
+            SQLSession.getSqlConnector().getSqlWorker().createCommand(commandAnnotation.name());
         }
 
         if (!BotConfig.isModuleActive("ai")) return;
@@ -114,6 +115,9 @@ public class CommandManager {
 
             if (!commandData.getSubcommands().isEmpty()) {
                 stringBuilder.append(convertSlashSubToString(commandData.getSubcommands())).append("\n");
+                commandData.getSubcommands().forEach(subcommandData -> {
+                    SQLSession.getSqlConnector().getSqlWorker().createCommand(commandAnnotation.name() + "_" + subcommandData.getName().toLowerCase());
+                });
             }
 
             if (!commandData.getSubcommandGroups().isEmpty()) {

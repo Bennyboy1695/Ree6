@@ -26,7 +26,7 @@ public class Blacklist implements ICommand {
     @Override
     public void onPerform(CommandEvent commandEvent) {
 
-        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {*/
             if (commandEvent.isSlashCommand()) {
 
                 OptionMapping wordOption = commandEvent.getOption("word");
@@ -133,9 +133,9 @@ public class Blacklist implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.default.usage", "blacklist add/remove/list"), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR.name()), 5);
-        }
+        }*/
         commandEvent.delete();
     }
 

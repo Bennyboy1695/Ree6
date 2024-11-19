@@ -29,7 +29,7 @@ public class Unmute implements ICommand {
             return;
         }
 
-        if (commandEvent.getMember().hasPermission(Permission.MODERATE_MEMBERS)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.MODERATE_MEMBERS)) {*/
 
             if (commandEvent.isSlashCommand()) {
 
@@ -54,9 +54,9 @@ public class Unmute implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.default.usage","unmute @user"), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MODERATE_MEMBERS.name()), 5);
-        }
+        }*/
 
         commandEvent.delete();
     }

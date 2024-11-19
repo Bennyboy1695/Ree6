@@ -25,7 +25,7 @@ public class Server implements ICommand {
      */
     @Override
     public void onPerform(CommandEvent commandEvent) {
-        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {*/
 
             EmbedBuilder em = new EmbedBuilder();
             em.setColor(BotConfig.getMainColor());
@@ -50,8 +50,8 @@ public class Server implements ICommand {
             em.setFooter(commandEvent.getGuild().getName() + " - " + BotConfig.getAdvertisement(), commandEvent.getGuild().getIconUrl());
 
             commandEvent.reply(em.build());
-        } else
-            commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission","ADMINISTRATOR"));
+/*        } else
+            commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission","ADMINISTRATOR"));*/
     }
 
     /**

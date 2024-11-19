@@ -122,7 +122,7 @@
             <version>d9194fb3fa</version>
         </dependency>
         <dependency>
-            <groupId>com.github.jwdeveloper.TikTok-Live-Java</groupId>
+            <groupId>com.github.jwdeveloper.TikTokLiveJava</groupId>
             <artifactId>Client</artifactId>
             <version>1.8.8-Release</version>
         </dependency>
@@ -170,9 +170,9 @@
 
         <!-- Database -->
         <dependency>
-            <groupId>de.ree6</groupId>
+            <groupId>com.github.Bennyboy1695</groupId>
             <artifactId>Ree6-SQL</artifactId>
-            <version>96c0ffe09b</version>
+            <version>605d5e6cb8</version>
         </dependency>
 
         <!-- Logging -->

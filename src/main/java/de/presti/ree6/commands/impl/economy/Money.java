@@ -4,6 +4,7 @@ import de.presti.ree6.commands.Category;
 import de.presti.ree6.commands.CommandEvent;
 import de.presti.ree6.commands.interfaces.Command;
 import de.presti.ree6.commands.interfaces.ICommand;
+import de.presti.ree6.sql.SQLSession;
 import de.presti.ree6.utils.data.EconomyUtil;
 import de.presti.ree6.utils.others.RandomUtils;
 import net.dv8tion.jda.api.Permission;
@@ -115,8 +116,13 @@ public class Money implements ICommand {
                 }
             }
         } else {
-            if (!commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*            if (!commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
                 commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", "ADMINISTRATOR"));
+                return;
+            }*/
+
+            if (!hasSubCommandPermission(commandEvent, subcommand)) {
+                commandEvent.reply(commandEvent.getResource("message.default.noPermissionForCommand", commandEvent.getCommand() + "_" + subcommand));
                 return;
             }
 

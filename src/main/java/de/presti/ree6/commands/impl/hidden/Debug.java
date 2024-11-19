@@ -14,10 +14,10 @@ public class Debug implements ICommand {
 
     @Override
     public void onPerform(CommandEvent commandEvent) {
-        if (!commandEvent.isBotOwner()) {
+/*        if (!commandEvent.isBotOwner()) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", "BE DEVELOPER"), 5);
             return;
-        }
+        }*/
 
         StringBuilder debugInfo = new StringBuilder("```")
                 .append("Build:").append(" ").append(BotWorker.getBuild()).append("\n")

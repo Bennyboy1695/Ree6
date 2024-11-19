@@ -53,7 +53,9 @@ public class Setup implements ICommand {
     @Override
     public void onPerform(CommandEvent commandEvent) {
 
+/*
         if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR) && commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+*/
 
             if (!commandEvent.isSlashCommand() &&
                     commandEvent.getArguments().length == 1 &&
@@ -260,9 +262,9 @@ public class Setup implements ICommand {
                     }
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR.name() + "/" + Permission.MANAGE_SERVER.name()));
-        }
+        }*/
 
         commandEvent.delete();
     }

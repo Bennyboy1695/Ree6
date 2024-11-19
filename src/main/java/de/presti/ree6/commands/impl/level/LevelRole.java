@@ -34,10 +34,10 @@ public class LevelRole implements ICommand {
             return;
         }
 
-        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_ROLES)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_ROLES)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MANAGE_ROLES.getName()));
             return;
-        }
+        }*/
 
         String command = commandEvent.getSubcommand();
         OptionMapping voiceMapping = commandEvent.getOption("voice");

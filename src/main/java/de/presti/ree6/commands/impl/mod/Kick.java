@@ -29,7 +29,7 @@ public class Kick implements ICommand {
             return;
         }
 
-        if (commandEvent.getMember().hasPermission(Permission.KICK_MEMBERS)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.KICK_MEMBERS)) {*/
 
             if (commandEvent.isSlashCommand()) {
 
@@ -56,9 +56,9 @@ public class Kick implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.default.usage","kick @user"), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.KICK_MEMBERS.name()), 5);
-        }
+        }*/
 
         commandEvent.delete();
     }

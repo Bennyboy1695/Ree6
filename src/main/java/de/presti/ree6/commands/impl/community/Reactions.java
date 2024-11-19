@@ -28,8 +28,13 @@ public class Reactions implements ICommand {
      */
     @Override
     public void onPerform(CommandEvent commandEvent) {
-        if (!commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR), 5);
+            return;
+        }*/
+
+        if (!hasSubCommandPermission(commandEvent, commandEvent.getSubcommand())) {
+            commandEvent.reply(commandEvent.getResource("message.default.noPermissionForCommand", commandEvent.getCommand() + "_" + commandEvent.getSubcommand()));
             return;
         }
 

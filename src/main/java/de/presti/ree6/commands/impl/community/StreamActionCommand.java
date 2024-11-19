@@ -49,15 +49,20 @@ public class StreamActionCommand implements ICommand {
             return;
         }
 
-        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_WEBHOOKS)) {
+ /*       if (!commandEvent.getMember().hasPermission(Permission.MANAGE_WEBHOOKS)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MANAGE_WEBHOOKS.getName()));
             return;
-        }
+        }*/
 
         OptionMapping name = commandEvent.getOption("name");
 
         String subCommandGroup = commandEvent.getSubcommandGroup();
         String subCommand = commandEvent.getSubcommand();
+
+        if (!hasSubCommandPermission(commandEvent, subCommand)) {
+            commandEvent.reply(commandEvent.getResource("message.default.noPermissionForCommand", commandEvent.getCommand() + "_" + subCommand));
+            return;
+        }
 
         switch (subCommandGroup) {
             case "manage" ->

@@ -37,15 +37,21 @@ public class Birthday implements ICommand {
             return;
         }
 
+
         String command = commandEvent.getSubcommand();
         OptionMapping userMapping = commandEvent.getOption("user");
         OptionMapping birthDayMapping = commandEvent.getOption("day");
         OptionMapping birthMonthMapping = commandEvent.getOption("month");
         OptionMapping birthYearMapping = commandEvent.getOption("year");
 
+        if (!hasSubCommandPermission(commandEvent, command)) {
+            commandEvent.reply(commandEvent.getResource("message.default.noPermissionForCommand", commandEvent.getCommand() + "_" + command));
+            return;
+        }
+
         switch (command) {
             case "list" -> {
-                if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*                if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {*/
                     SQLSession.getSqlConnector().getSqlWorker().getBirthdays(commandEvent.getGuild().getIdLong()).subscribe(birthdayWishes -> {
                         StringBuilder sb = new StringBuilder();
                         for (BirthdayWish wish : birthdayWishes) {
@@ -55,9 +61,9 @@ public class Birthday implements ICommand {
                         }
                         commandEvent.reply(commandEvent.getResource("message.birthday.list", sb));
                     });
-                } else {
+/*                } else {
                     commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR.getName()), 5);
-                }
+                }*/
             }
             case "remove" -> {
                 if (userMapping == null) {
@@ -65,7 +71,7 @@ public class Birthday implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.birthday.removed.self"), 5);
                 } else {
                     Member member = userMapping.getAsMember();
-                    if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*                    if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {*/
                         if (member == null) {
                             commandEvent.reply(commandEvent.getResource("message.default.noMention.user"), 5);
                             return;
@@ -73,9 +79,9 @@ public class Birthday implements ICommand {
 
                         SQLSession.getSqlConnector().getSqlWorker().removeBirthday(commandEvent.getGuild().getIdLong(), member.getIdLong());
                         commandEvent.reply(commandEvent.getResource("message.birthday.removed.other", member.getAsMention()), 5);
-                    } else {
+/*                    } else {
                         commandEvent.reply(commandEvent.getResource("message.birthday.removed.noPerms"), 5);
-                    }
+                    }*/
                 }
             }
 
@@ -92,16 +98,16 @@ public class Birthday implements ICommand {
                 } else {
                     Member member = userMapping.getAsMember();
                     if (GenericValidator.isDate(date, "dd.MM.yyyy", true)) {
-                        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*                        if (commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {*/
                             if (member == null) {
                                 commandEvent.reply(commandEvent.getResource("message.default.noMention.user"), 5);
                             } else {
                                 SQLSession.getSqlConnector().getSqlWorker().addBirthday(commandEvent.getGuild().getIdLong(), commandEvent.getChannel().getIdLong(), member.getIdLong(), date);
                                 commandEvent.reply(commandEvent.getResource("message.birthday.added.other", member.getAsMention()), 5);
                             }
-                        } else {
+  /*                      } else {
                             commandEvent.reply(commandEvent.getResource("message.birthday.added.noPerms"), 5);
-                        }
+                        }*/
                     } else {
                         commandEvent.reply(commandEvent.getResource("message.default.time.date"), 5);
                     }

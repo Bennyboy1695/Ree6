@@ -44,10 +44,10 @@ public class Warn implements ICommand {
             return;
         }
 
-        if (!commandEvent.getMember().hasPermission(Permission.MODERATE_MEMBERS)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.MODERATE_MEMBERS)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MODERATE_MEMBERS.name()), 5);
             return;
-        }
+        }*/
 
         String subCommandGroup = commandEvent.getSubcommandGroup();
         String subCommand = commandEvent.getSubcommand();

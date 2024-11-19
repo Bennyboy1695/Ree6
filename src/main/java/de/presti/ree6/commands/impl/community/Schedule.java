@@ -46,12 +46,17 @@ public class Schedule implements ICommand {
             return;
         }
 
-        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MANAGE_SERVER.name()), 5);
             return;
-        }
+        }*/
 
         String subCommand = commandEvent.getSubcommand();
+
+        if (!hasSubCommandPermission(commandEvent, subCommand)) {
+            commandEvent.reply(commandEvent.getResource("message.default.noPermissionForCommand", commandEvent.getCommand() + "_" + subCommand));
+            return;
+        }
 
         switch (subCommand) {
 

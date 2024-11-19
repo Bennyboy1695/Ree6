@@ -48,10 +48,10 @@ public class Ticket implements ICommand {
             return;
         }
 
-        if (!commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.ADMINISTRATOR)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.ADMINISTRATOR.getName()));
             return;
-        }
+        }*/
 
         OptionMapping ticketChannel = commandEvent.getOption("supportchannel");
         OptionMapping logChannel = commandEvent.getOption("logchannel");

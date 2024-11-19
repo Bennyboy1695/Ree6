@@ -20,10 +20,10 @@ public class News implements ICommand {
      */
     @Override
     public void onPerform(CommandEvent commandEvent) {
-        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
+/*        if (!commandEvent.getMember().hasPermission(Permission.MANAGE_SERVER)) {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MANAGE_SERVER.name()), 5);
             return;
-        }
+        }*/
 
         SQLSession.getSqlConnector().getSqlWorker().getSetting(commandEvent.getGuild().getIdLong(), "configuration_news").subscribe(settingOptional -> {
             if (settingOptional.isEmpty()) {

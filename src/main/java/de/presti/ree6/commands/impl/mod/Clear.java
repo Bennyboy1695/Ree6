@@ -29,7 +29,7 @@ public class Clear implements ICommand {
             return;
         }
 
-        if (commandEvent.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
+/*        if (commandEvent.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {*/
             if (commandEvent.isSlashCommand()) {
                 OptionMapping amountOption = commandEvent.getOption("amount");
 
@@ -55,9 +55,9 @@ public class Clear implements ICommand {
                     commandEvent.reply(commandEvent.getResource("message.default.usage", "clear 2-200"), 5);
                 }
             }
-        } else {
+/*        } else {
             commandEvent.reply(commandEvent.getResource("message.default.insufficientPermission", Permission.MESSAGE_MANAGE.name()), 5);
-        }
+        }*/
     }
 
     /**

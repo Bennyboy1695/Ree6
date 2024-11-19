@@ -42,6 +42,11 @@ public class Giveaway implements ICommand {
             return;
         }
 
+        if (!hasSubCommandPermission(commandEvent, commandEvent.getSubcommand())) {
+            commandEvent.reply(commandEvent.getResource("message.default.noPermissionForCommand", commandEvent.getCommand() + "_" + commandEvent.getSubcommand()));
+            return;
+        }
+
         if (!commandEvent.getGuild().getSelfMember().hasPermission(Permission.ADMINISTRATOR)) {
             commandEvent.reply(commandEvent.getResource("message.default.needPermission", Permission.MANAGE_WEBHOOKS.getName()));
             return;
